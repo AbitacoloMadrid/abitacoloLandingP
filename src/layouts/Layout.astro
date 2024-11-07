@@ -35,6 +35,8 @@ const { title } = Astro.props;
       name="keywords"
       content="alquiler de muebles, eventos, oficinas, hogares, mobiliario flexible"
     />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <!-- Open Graph Tags -->
     <meta
@@ -76,6 +78,11 @@ const { title } = Astro.props;
         "url": "http://www.abitacolo.info/",
         "logo": "https://www.abitacolo.info/_image?href=%2F_astro%2FANegra.BVy9ZUr_.webp&w=89&h=89&f=webp",
         "description": "Alquiler de muebles para eventos, oficinas y hogares con flexibilidad en tiempos y entrega rápida.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Madrid",
+          "addressCountry": "ES"
+        },
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+34-666-696-358",
@@ -89,7 +96,7 @@ const { title } = Astro.props;
       }
     </script>
   </head>
-  <body>
+  <body class="antialiased min-h-screen">
     <slot />
   </body>
 </html>
