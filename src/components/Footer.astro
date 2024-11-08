@@ -95,15 +95,13 @@ const navItems = [
 </footer>
 
 <script>
-  function handleNavClick(e) {
+  function handleNavClick(e: Event) {
     e.preventDefault();
-    const href = e.currentTarget.getAttribute("href");
+    const href = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
     if (!href) return;
-
     const isHomePage =
       window.location.pathname === "/" ||
       window.location.pathname === "/index.html";
-
     if (isHomePage) {
       const targetElement = document.querySelector(href);
       if (targetElement) {
@@ -113,7 +111,6 @@ const navItems = [
       window.location.href = "/" + href;
     }
   }
-
   document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll("[data-nav-link]");
     navLinks.forEach((link) => {
