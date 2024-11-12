@@ -12,20 +12,20 @@ import logoA from "../image/logos/ANegra.webp";
   aria-describedby="cookieModalDescription"
 >
   <div
-    class="grid min-h-[89px] max-w-[1207px] items-center gap-5 rounded-2xl border-4 border-[#919e32] bg-white px-4 pt-4 pb-2.5 min-[1205px]:flex"
+    class="grid min-h-[89px] max-w-[1107px] justify-around xl:w-full items-center gap-5 rounded-2xl border-4 border-[#919e32] bg-white px-4 pt-4 pb-2.5 min-[1205px]:flex"
   >
     <h2 id="cookieModalTitle" class="sr-only">Consentimiento de Cookies</h2>
     <p id="cookieModalDescription" class="sr-only">
       Elige tus preferencias de cookies
     </p>
 
-    <div class="flex items-center gap-6">
-      <div style={{ minWidth: "89px", minHeight: "89px" }}>
+    <div class="flex items-center justify-center gap-6">
+      <div style={{ minWidth: "69px", minHeight: "69px" }}>
         <Image
           src={logoA}
           alt="Icono de información"
-          width={89}
-          height={89}
+          width={69}
+          height={69}
           loading="eager"
         />
       </div>
@@ -40,11 +40,13 @@ import logoA from "../image/logos/ANegra.webp";
     <div
       class="inline-flex max-w-[342px] min-h-[29px] flex-col items-start justify-start"
     >
-      <div
-        class="self-stretch text-sm leading-none tracking-tight text-[#37474f]"
-      >
+      <div class="self-stretch text-sm text-[#37474f]">
         Utilizamos cookies para mejorar tu experiencia en nuestra web. Estas
-        almacenan información sobre tus preferencias.
+        almacenan información sobre tus preferencias. <a
+          href="/terminos-y-condiciones"
+          class="text-blue-600 cursor-pointer hover:text-blue-800"
+          >Consulta nuestra política de privacidad.</a
+        >
       </div>
     </div>
     <div
@@ -76,7 +78,7 @@ import logoA from "../image/logos/ANegra.webp";
         </div>
       </div>
     </button> -->
-    <div class="flex h-10 items-start justify-start gap-4">
+    <div class="flex h-10 items-start justify-center gap-4">
       <button
         id="rejectAll"
         class="flex items-center justify-center gap-2.5 py-[9px]"
