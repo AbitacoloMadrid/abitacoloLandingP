@@ -3,7 +3,6 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
-import partytown from "@astrojs/partytown";
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -21,7 +20,6 @@ export default defineConfig({
         "https://www.abitacolo.info/team/Guillermo%20Correa",
       ],
     }),
-    partytown({ config: { forward: ["dataLayer.push"] } }),
   ],
   output: "server",
   site: "https://www.abitacolo.info/",
