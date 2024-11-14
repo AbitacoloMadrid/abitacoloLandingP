@@ -12,8 +12,8 @@ const navItems = [
 ];
 ---
 
-<nav class="w-full absolute flex justify-center h-fit z-50">
-  <div class="max-w-[1440px] w-full px-8 py-4 flex items-center mt-2">
+<nav class="w-full absolute flex justify-center h-fit z-50 mt-2">
+  <div class="max-w-[1440px] w-full px-8 py-4 flex">
     <a href="/" aria-label="Inicio">
       <Image
         width={225}
@@ -25,8 +25,8 @@ const navItems = [
       />
     </a>
 
-    <div class="max-[950px]:hidden flex justify-between items-center w-full">
-      <ul class="h-8 flex items-center gap-3 ml-4">
+    <div class="max-[950px]:hidden items-end flex justify-between w-full">
+      <ul class="h-8 flex gap-3 ml-4">
         {
           navItems.map(({ href, label }) => (
             <li>

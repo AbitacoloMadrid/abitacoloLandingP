@@ -78,7 +78,7 @@ const team = [
     position: "Full Stack Developer",
     linkImage: GCG,
     description:
-      "Soy un escalador de barrancos. Disfruto el proceso de llegar hasta la cima y ver el paisaje reservado para quienes nos aventuramos",
+      "Soy escalador. Disfruto el proceso de llegar hasta la cima y ver el paisaje reservado para quienes nos aventuramos",
     linkedin: "https://www.linkedin.com/in/guillermocg8/",
   },
 ];
