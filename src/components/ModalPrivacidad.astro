@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import ajustes from "../image/iconoAjustes.webp";
 import logoA from "../image/logos/ANegra.webp";
+/// <reference path="./global.d.ts" />
 ---
 
 <div
@@ -40,11 +41,13 @@ import logoA from "../image/logos/ANegra.webp";
     >
       <div class="self-stretch text-sm text-[#37474f]">
         Utilizamos cookies para mejorar tu experiencia en nuestra web. Estas
-        almacenan información sobre tus preferencias. <a
+        almacenan información sobre tus preferencias.
+        <a
           href="/terminos-y-condiciones"
-          class="text-blue-600 cursor-pointer hover:text-blue-800"
-          >Consulta nuestra política de privacidad.</a
-        >
+          class="text-blue-600 cursor-pointer
+        hover:text-blue-800"
+          >Consulta nuestra política de privacidad.
+        </a>
       </div>
     </div>
     <div
@@ -57,25 +60,6 @@ import logoA from "../image/logos/ANegra.webp";
         Aceptar todas
       </button>
     </div>
-    <!-- <button
-      id="customize"
-      class="flex items-center justify-center gap-1.5 rounded-full border-2 border-[#666666] px-7 py-2.5"
-    >
-      <div class="text-sm font-semibold leading-[16.80px] text-[#666666]">
-        Personalizar
-      </div>
-      <div class="relative w-4 h-4">
-        <div style={{ minWidth: "24px", minHeight: "26px" }}>
-          <Image
-            src={ajustes}
-            alt="Icono de ajustes"
-            width={24}
-            height={26}
-            loading="eager"
-          />
-        </div>
-      </div>
-    </button> -->
     <div class="flex h-10 items-start justify-center gap-4">
       <button
         id="rejectAll"
@@ -89,83 +73,110 @@ import logoA from "../image/logos/ANegra.webp";
       </button>
     </div>
   </div>
-</div>
-<script>
-  const STORAGE_KEY = "cookieConsent";
-  const COOKIE_NAME = "cookieConsent";
 
-  function getStoredConsent() {
-    return localStorage.getItem(STORAGE_KEY);
-  }
+  <script>
+    const STORAGE_KEY = "cookieConsent";
+    const COOKIE_NAME = "cookieConsent";
 
-  function setStoredConsent(value) {
-    localStorage.setItem(STORAGE_KEY, value);
-    setCookie(COOKIE_NAME, value, 365); // Set cookie for 1 year
-  }
-
-  function showModal() {
-    const storedConsent = getStoredConsent();
-    if (!storedConsent) {
-      document.getElementById("cookieModal").classList.remove("hidden");
-      document.getElementById("cookieModal").classList.add("flex");
+    function getUserConsent() {
+      return localStorage.getItem("cookieConsent") === "rejected";
     }
-  }
 
-  function closeModal() {
-    document.getElementById("cookieModal").classList.add("hidden");
-  }
-
-  function setConsent(value) {
-    setStoredConsent(value);
-    closeModal();
-    if (value === "accepted") {
-      enableCookies();
-    } else {
-      disableCookies();
+    function getStoredConsent() {
+      return localStorage.getItem(STORAGE_KEY);
     }
-  }
 
-  function setCookie(name: string, value: string, days: number) {
-    let expires = "";
-    if (days) {
-      const date = new Date();
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      expires = "; expires=" + date.toUTCString();
+    function setStoredConsent(value) {
+      localStorage.setItem(STORAGE_KEY, value);
+      setCookie(COOKIE_NAME, value, 365); // Set cookie for 1 year
     }
-    document.cookie =
-      name + "=" + (value || "") + expires + "; path=/; SameSite=Strict";
-  }
 
-  function enableCookies() {
-    // Enable your analytics, ad cookies, etc. here
-    console.log("Cookies enabled");
-  }
+    function showModal() {
+      const storedConsent = getStoredConsent();
+      if (!storedConsent) {
+        document.getElementById("cookieModal").classList.remove("hidden");
+        document.getElementById("cookieModal").classList.add("flex");
+      }
+    }
 
-  function disableCookies() {
-    // Remove any existing cookies
-    document.cookie.split(";").forEach(function (c) {
-      document.cookie = c
-        .replace(/^ +/, "")
-        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    function closeModal() {
+      document.getElementById("cookieModal").classList.add("hidden");
+    }
+
+    function setConsent(value) {
+      setStoredConsent(value);
+      closeModal();
+      if (value === "rejected") {
+        disableCookies();
+      } else {
+        enableCookies();
+      }
+    }
+
+    function setCookie(name: string, value: string, days: number) {
+      let expires = "";
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie =
+        name + "=" + (value || "") + expires + "; path=/; SameSite=Strict";
+    }
+
+    function enableCookies() {
+      // Enable your analytics, ad cookies, etc. here
+      loadGoogleAnalytics();
+    }
+
+    function disableCookies() {
+      // Remove any existing cookies
+      document.cookie.split(";").forEach(function (c) {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      });
+
+      // Disable any future cookie setting
+      document.cookie =
+        "cookieConsent=rejected; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+      // Disable Google Analytics script
+      const gaScript = document.querySelector(
+        'script[src^="https://www.googletagmanager.com/gtag/js"]'
+      );
+      if (gaScript) {
+        gaScript.parentNode.removeChild(gaScript);
+      }
+    }
+
+    function loadGoogleAnalytics() {
+      if (!getUserConsent()) {
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-QQZH201X84";
+        document.body.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag(p0: string, p1?: Date | string) {
+          // Adjusted type for p1
+          dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+        gtag("config", "G-QQZH201X84");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const acceptBtn = document.getElementById("acceptAll");
+      const rejectBtn = document.getElementById("rejectAll");
+
+      acceptBtn.onclick = () => setConsent("accepted");
+      rejectBtn.onclick = () => setConsent("rejected");
+
+      showModal();
     });
-    // Disable any future cookie setting
-    document.cookie =
-      "cookieConsent=rejected; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const acceptBtn = document.getElementById("acceptAll");
-    // const customizeBtn = document.getElementById("customize");
-    const rejectBtn = document.getElementById("rejectAll");
-
-    acceptBtn.onclick = () => setConsent("accepted");
-    rejectBtn.onclick = () => setConsent("rejected");
-    // customizeBtn.onclick = () => {
-    //   console.log("Open customization settings");
-    //   // Aquí puedes implementar la lógica para abrir un modal de personalización
-    //   // Por ahora, no cerramos el modal principal
-    // };
-
-    showModal();
-  });
-</script>
+  </script>
+</div>
