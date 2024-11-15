@@ -1,6 +1,6 @@
 // global.d.ts
 declare global {
-    var dataLayer: any[];
+    var dataLayer: unknown[];
 }
 
 export { };
