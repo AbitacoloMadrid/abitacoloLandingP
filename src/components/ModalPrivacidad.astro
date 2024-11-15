@@ -14,6 +14,7 @@ import logoA from "../image/logos/ANegra.webp";
 >
   <div
     class="grid min-h-[89px] max-w-[1107px] justify-between xl:w-full items-center gap-6 rounded-2xl border-4 border-[#919e32] bg-white px-4 pt-4 pb-2.5 min-[1205px]:flex"
+    role="document"
   >
     <h2 id="cookieModalTitle" class="sr-only">Consentimiento de Cookies</h2>
     <p id="cookieModalDescription" class="sr-only">
@@ -44,8 +45,7 @@ import logoA from "../image/logos/ANegra.webp";
         almacenan información sobre tus preferencias.
         <a
           href="/terminos-y-condiciones"
-          class="text-blue-600 cursor-pointer
-        hover:text-blue-800"
+          class="text-blue-800 hover:text-blue-900 underline"
           >Consulta nuestra política de privacidad.
         </a>
       </div>
@@ -103,7 +103,7 @@ import logoA from "../image/logos/ANegra.webp";
       document.getElementById("cookieModal").classList.add("hidden");
     }
 
-    function setConsent(value) {
+    function setConsent(value: string) {
       setStoredConsent(value);
       closeModal();
       if (value === "rejected") {
@@ -125,23 +125,19 @@ import logoA from "../image/logos/ANegra.webp";
     }
 
     function enableCookies() {
-      // Enable your analytics, ad cookies, etc. here
       loadGoogleAnalytics();
     }
 
     function disableCookies() {
-      // Remove any existing cookies
       document.cookie.split(";").forEach(function (c) {
         document.cookie = c
           .replace(/^ +/, "")
           .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
       });
 
-      // Disable any future cookie setting
       document.cookie =
         "cookieConsent=rejected; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
 
-      // Disable Google Analytics script
       const gaScript = document.querySelector(
         'script[src^="https://www.googletagmanager.com/gtag/js"]'
       );
@@ -155,12 +151,11 @@ import logoA from "../image/logos/ANegra.webp";
         const script = document.createElement("script");
         script.async = true;
         script.src = "https://www.googletagmanager.com/gtag/js?id=G-QQZH201X84";
-        document.body.appendChild(script);
+        document.head.appendChild(script);
 
         window.dataLayer = window.dataLayer || [];
 
         function gtag(p0: string, p1?: Date | string) {
-          // Adjusted type for p1
           dataLayer.push(arguments);
         }
 
