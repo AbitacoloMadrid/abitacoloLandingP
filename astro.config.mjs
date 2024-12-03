@@ -21,7 +21,7 @@ export default defineConfig({
       ],
     }),
   ],
-  output: "server",
+  output: "static",
   site: "https://www.abitacolo.info/",
   adapter: vercel(),
 });
