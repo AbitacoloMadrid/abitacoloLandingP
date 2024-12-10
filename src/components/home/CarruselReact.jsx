@@ -38,25 +38,6 @@ const team = [
     linkedin: "https://www.linkedin.com/in/benmanuel/",
   },
   {
-    person: "Alba Caldito G.",
-    position: "Content Manager",
-
-    linkImage: ACG,
-    description:
-      "Hablar es mi pasión y puedo hacerlo desde cualquier canal, lo que se podría definir como “ser una comunicadora 360”.",
-    linkedin: "https://www.linkedin.com/in/albacalditogutierrez/",
-  },
-
-  {
-    person: "Maria Para R.",
-    position: "Creative Project Manager",
-
-    linkImage: MPR,
-    description:
-      "Pienso, organizo y ejecuto ideas de todo tipo. Puedo llevar proyectos con espíritu de barrio a un nivel intergaláctico.",
-    linkedin: "https://www.linkedin.com/in/mariapararodriguez/",
-  },
-  {
     person: "Cristina Allen Casal",
     position: "Marketing expert Content & Brand",
 
