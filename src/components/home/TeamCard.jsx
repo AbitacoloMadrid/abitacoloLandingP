@@ -22,9 +22,7 @@ const TeamCard = ({ person, position, linkImage, description, linkedin }) => (
         <p className="text-black/90 uppercase max-md:text-xs leading-tight mt-2">
           {position}
         </p>
-        <p className="text-[#666666] text-sm leading-tight mt-2">
-          {description}
-        </p>
+        <p className="text-gris2 text-sm leading-tight mt-2">{description}</p>
       </div>
     </div>
     <div className="flex items-center gap-4 p-3">

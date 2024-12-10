@@ -121,7 +121,7 @@ const TeamCarousel = () => {
         <button
           onClick={prevSlide}
           aria-label="Ver el miembro anterior del equipo"
-          className="p-2 focus:outline-none focus:ring-2 focus:ring-[#d6ff85]"
+          className="p-2 focus:outline-none focus:ring-2 focus:ring-verdeLimaAbitacolo"
         >
           <img
             src={FlechaIzq.src}
@@ -137,8 +137,8 @@ const TeamCarousel = () => {
           {team.map((_, index) => (
             <button
               key={index}
-              className={`w-4 h-4 rounded-full focus:outline-none focus:ring-2 focus:ring-[#d6ff85] ${
-                index === currentIndex ? "bg-[#919e32]" : "bg-gray-300"
+              className={`w-4 h-4 rounded-full focus:outline-none focus:ring-2 focus:ring-verdeLimaAbitacolo ${
+                index === currentIndex ? "bg-verdeAbitacolo" : "bg-gray-300"
               }`}
               onClick={() => setCurrentIndex(index)}
               aria-label={`Ir al miembro ${index + 1} del equipo`}
@@ -152,7 +152,7 @@ const TeamCarousel = () => {
         <button
           onClick={nextSlide}
           aria-label="Ver el siguiente miembro del equipo"
-          className="p-2 focus:outline-none focus:ring-2 focus:ring-[#d6ff85]"
+          className="p-2 focus:outline-none focus:ring-2 focus:ring-verdeLimaAbitacolo"
         >
           <img
             src={FlechaDrch.src}
