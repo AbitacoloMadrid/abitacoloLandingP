@@ -68,6 +68,7 @@ const TeamCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
 
+  // Optimización con useCallback para las funciones de navegación
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % team.length);
   }, []);
@@ -82,11 +83,12 @@ const TeamCarousel = () => {
       setCardsToShow(width >= 1100 ? 3 : width >= 900 ? 2 : 1);
     };
 
-    handleResize();
+    handleResize(); // Llamar a la función una vez al cargar el componente
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize); // Limpiar evento al desmontar
   }, []);
 
+  // UseMemo para evitar cálculos innecesarios en cada renderizado
   const visibleCards = useMemo(() => {
     const visible = team.slice(currentIndex, currentIndex + cardsToShow);
     const extra = team.slice(
@@ -106,7 +108,7 @@ const TeamCarousel = () => {
         <div className="flex transition-transform duration-300 ease-in-out gap-3 h-[500px]">
           {visibleCards.map((member, index) => (
             <div
-              key={`${member.person}-${index}`}
+              key={index}
               className={`flex justify-center ${
                 cardsToShow === 3 ? "w-1/3" : "w-full"
               }`}
@@ -142,7 +144,6 @@ const TeamCarousel = () => {
               }`}
               onClick={() => setCurrentIndex(index)}
               aria-label={`Ir al miembro ${index + 1} del equipo`}
-              alt={index + 1}
               aria-selected={index === currentIndex}
               role="tab"
             />
