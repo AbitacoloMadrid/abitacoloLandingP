@@ -1,10 +1,8 @@
 import React, { useMemo } from "react";
-import PropTypes from "prop-types";
 import LinkedInNegro from "../../image/logos/LinkedInNegro.webp";
 
 const TeamCard = React.memo(
-  ({ person, position, linkImage, description, linkedin }) => {
-    // Uso de useMemo para evitar cálculos innecesarios en cada renderizado
+  ({ person, position, linkImage, description, linkedin = "" }) => {
     const teamPageLink = useMemo(
       () => `/team/${encodeURIComponent(person)}`,
       [person]
@@ -63,15 +61,5 @@ const TeamCard = React.memo(
     );
   }
 );
-
-TeamCard.propTypes = {
-  person: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
-  linkImage: PropTypes.shape({
-    src: PropTypes.string.isRequired,
-  }).isRequired,
-  description: PropTypes.string.isRequired,
-  linkedin: PropTypes.string,
-};
 
 export default TeamCard;
