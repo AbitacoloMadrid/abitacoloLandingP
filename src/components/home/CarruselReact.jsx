@@ -66,7 +66,6 @@ const TeamCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
 
-  // Optimización con useCallback para las funciones de navegación
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % team.length);
   }, []);
@@ -81,12 +80,11 @@ const TeamCarousel = () => {
       setCardsToShow(width >= 1100 ? 3 : width >= 900 ? 2 : 1);
     };
 
-    handleResize(); // Llamar a la función una vez al cargar el componente
+    handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize); // Limpiar evento al desmontar
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // UseMemo para evitar cálculos innecesarios en cada renderizado
   const visibleCards = useMemo(() => {
     const visible = team.slice(currentIndex, currentIndex + cardsToShow);
     const extra = team.slice(
