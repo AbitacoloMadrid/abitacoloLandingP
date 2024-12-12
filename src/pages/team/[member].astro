@@ -3,13 +3,11 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 
-import ACG from "../../image/equipo/ACG.webp";
 import CA from "../../image/equipo/CA.webp";
 import GCG from "../../image/equipo/GCG.webp";
 import GPC from "../../image/equipo/GPC.webp";
 import JCM from "../../image/equipo/JCM.webp";
 import MBR from "../../image/equipo/MBR.webp";
-import MPR from "../../image/equipo/MPR.webp";
 import XLD from "../../image/equipo/XLD.webp";
 
 import { Image } from "astro:assets";
@@ -50,44 +48,13 @@ const team = [
     linkImage: MBR,
     linkedin: "https://www.linkedin.com/in/benmanuel/",
     semblanza1:
-    "Soy Manu, un Product Designer con más de 3 años de experiencia en el ecosistema digital y especializado en la investigación de usuarios y desarrollo de soluciones que impulsan el crecimiento empresarial. Me encanta entender qué es lo que realmente necesitan los usuarios empleando metodología de Design Thinking y valorando datos cuantitativos y cualitativos para poder crear un producto acorde a sus necesidades.",
+      "Soy Manu, un Product Designer con más de 3 años de experiencia en el ecosistema digital y especializado en la investigación de usuarios y desarrollo de soluciones que impulsan el crecimiento empresarial. Me encanta entender qué es lo que realmente necesitan los usuarios empleando metodología de Design Thinking y valorando datos cuantitativos y cualitativos para poder crear un producto acorde a sus necesidades.",
     semblanza2:
-    "Antes de comenzar profesionalmente como UX Designer, trabajé siete años en el sector audiovisual dentro de varios departamentos de Producción y Dirección. Esta experiencia previa me ha aportado grandes habilidades organizativas y de liderazgo de equipos, además de potenciar mi creatividad y carácter resolutivo.",
+      "Antes de comenzar profesionalmente como UX Designer, trabajé siete años en el sector audiovisual dentro de varios departamentos de Producción y Dirección. Esta experiencia previa me ha aportado grandes habilidades organizativas y de liderazgo de equipos, además de potenciar mi creatividad y carácter resolutivo.",
     semblanza3:
-    "He demostrado una sólida capacidad para desarrollar soluciones centradas en el usuario que se alinean con los objetivos empresariales. Analizo, recabo datos y empleo herramientas de diseño como Figma o Adobe XD para generar los prototipos que derivarán a la creación del producto final.",
-    semblanza4: "Sumada a mi experiencia en proyectos de ecommerce, en el sector healthcare y el de los anuncios clasificados, creo firmemente que mi combinación de habilidades en diseño digital y producción audiovisual me convierte en un perfil ideal para un proyecto de este tipo. Especialmente cuando trabajo en equipos dinámicos en los que mis aportaciones son recibidas con entusiasmo y positividad. Abitacolo es uno de ellos."
-  },
-  {
-    person: "Alba Caldito G.",
-    position: "Content Manager",
-    linkImage: ACG,
-    linkedin: "https://www.linkedin.com/in/albacalditogutierrez/",
-    semblanza1:
-      "¡Hola! Soy Alba. No sabía cómo empezar a definirme, así que lo haré por lo que se me da bien. Cocinar y escribir son mi pasión, y aunque juntas puedan parecer incompatibles, las dos son mi mejor expresión de creatividad. Quizá te preguntes por qué estoy aquí, fácil, sé encontrar el equilibro perfecto para todo, ya sea en la cocina o al elegir las palabras. Y aunque pueda parecer muy salada, nunca voy pasada de condimento, ni en los platos ni en las frases.",
-    semblanza2:
-      "Periodista como Carrie, sin ganar un sólo euro por mi columna eso sí, soy la mente detrás de Lo que escriben mis dedos. Y como nuestra querida Sarah Jessica Parker también soy multifacética, desde organización de eventos de rechupete hasta estar hiperespecializada en Big Data, Machine Learning e Inteligencia Artificial. Y aunque lo creativo es lo mío, en Excel y análisis y puesta a punto de campañas soy una crack.",
-    semblanza3:
-      "Si necesitas material corporativo soy tu chica y si eso no va contigo y lo que necesitas son labores de prensa y redacción pues entonces estás en el lugar adecuado.",
+      "He demostrado una sólida capacidad para desarrollar soluciones centradas en el usuario que se alinean con los objetivos empresariales. Analizo, recabo datos y empleo herramientas de diseño como Figma o Adobe XD para generar los prototipos que derivarán a la creación del producto final.",
     semblanza4:
-      "Trabajo muy cómoda en entornos dónde la creatividad es valorada, pero a quién no le gusta lo técnico de una redacción SEO… quién diga que lo odia, MIENTE.",
-  },
-
-  {
-    person: "Maria Para R.",
-    position: "Creative Project Manager",
-
-    linkImage: MPR,
-    linkedin: "https://www.linkedin.com/in/mariapararodriguez/",
-    semblanza1:
-      "¡Hola!! Soy María y me dedico a la gestión de proyectos creativos. Disfruto de ordenar y reorganizar espacios, algo que aplico en mi trabajo. Cada proyecto es una oportunidad para crear algo único, estructurando ideas y entornos.",
-    semblanza2:
-      "Mi personalidad curiosa hace que me interese por el entorno que me rodea y las tendencias del momento, por lo que en mi día a día descubro cientos de referencias que me encanta poder aplicar en los proyectos en los me involucro.",
-    semblanza3:
-      "Uso mis redes sociales a modo de diario, donde a través de la fotografía documental y el storytelling narro y plasmo mis vivencias.",
-    semblanza4:
-      "Me gusta aportar un enfoque creativo a cada reto en el que me envuelvo, añadiendo así valor y diferenciación. Fácilmente puedo entrar en el mundo interno de cada trabajo y sacar a flote la personalidad de cada idea.",
-    semblanza5:
-      "Para mí, cada proyecto es una oportunidad de crear algo único y funcional, aprovechando mi habilidad para darle estructura a las ideas y los entornos. Supongo que por eso disfruto tanto lo que hago: transformar el caos en orden y asegurar que todo fluya de la mejor manera posible.",
+      "Sumada a mi experiencia en proyectos de ecommerce, en el sector healthcare y el de los anuncios clasificados, creo firmemente que mi combinación de habilidades en diseño digital y producción audiovisual me convierte en un perfil ideal para un proyecto de este tipo. Especialmente cuando trabajo en equipos dinámicos en los que mis aportaciones son recibidas con entusiasmo y positividad. Abitacolo es uno de ellos.",
   },
   {
     person: "Cristina Allen Casal",
@@ -177,7 +144,6 @@ const teamMember = team.find((e) => e.person === member);
             <p class="text-black text-start p-2 text-xl max-sm:text-lg">
               {teamMember.semblanza5}
             </p>
-       
           </div>
         </div>
       </div>

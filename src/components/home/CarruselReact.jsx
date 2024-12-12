@@ -3,13 +3,11 @@ import TeamCard from "./TeamCard.jsx";
 import FlechaIzq from "../../image/FlechaIzq.webp";
 import FlechaDrch from "../../image/FlechaDrch.webp";
 
-import ACG from "../../image/equipo/ACG.webp";
 import CA from "../../image/equipo/CA.webp";
 import GCG from "../../image/equipo/GCG.webp";
 import GPC from "../../image/equipo/GPC.webp";
 import JCM from "../../image/equipo/JCM.webp";
 import MBR from "../../image/equipo/MBR.webp";
-import MPR from "../../image/equipo/MPR.webp";
 import XLD from "../../image/equipo/XLD.webp";
 
 const team = [
@@ -36,25 +34,6 @@ const team = [
     description:
       "Curioso, apasionado y siempre dispuesto a ayudar. ¿Lo que más me gusta de mi profesión? Tendría que decir que todo.",
     linkedin: "https://www.linkedin.com/in/benmanuel/",
-  },
-  {
-    person: "Alba Caldito G.",
-    position: "Content Manager",
-
-    linkImage: ACG,
-    description:
-      "Hablar es mi pasión y puedo hacerlo desde cualquier canal, lo que se podría definir como “ser una comunicadora 360”.",
-    linkedin: "https://www.linkedin.com/in/albacalditogutierrez/",
-  },
-
-  {
-    person: "Maria Para R.",
-    position: "Creative Project Manager",
-
-    linkImage: MPR,
-    description:
-      "Pienso, organizo y ejecuto ideas de todo tipo. Puedo llevar proyectos con espíritu de barrio a un nivel intergaláctico.",
-    linkedin: "https://www.linkedin.com/in/mariapararodriguez/",
   },
   {
     person: "Cristina Allen Casal",
@@ -125,7 +104,7 @@ const TeamCarousel = () => {
         <div className="flex transition-transform duration-300 ease-in-out gap-3 h-[500px]">
           {visibleCards.map((member, index) => (
             <div
-              key={`${member.person}-${index}`}
+              key={index}
               className={`flex justify-center ${
                 cardsToShow === 3 ? "w-1/3" : "w-full"
               }`}
@@ -140,7 +119,7 @@ const TeamCarousel = () => {
         <button
           onClick={prevSlide}
           aria-label="Ver el miembro anterior del equipo"
-          className="p-2 focus:outline-none focus:ring-2 focus:ring-[#d6ff85]"
+          className="p-2 focus:outline-none focus:ring-2 focus:ring-verdeLimaAbitacolo"
         >
           <img
             src={FlechaIzq.src}
@@ -156,12 +135,11 @@ const TeamCarousel = () => {
           {team.map((_, index) => (
             <button
               key={index}
-              className={`w-4 h-4 rounded-full focus:outline-none focus:ring-2 focus:ring-[#d6ff85] ${
-                index === currentIndex ? "bg-[#919e32]" : "bg-gray-300"
+              className={`w-4 h-4 rounded-full focus:outline-none focus:ring-2 focus:ring-verdeLimaAbitacolo ${
+                index === currentIndex ? "bg-verdeAbitacolo" : "bg-gray-300"
               }`}
               onClick={() => setCurrentIndex(index)}
               aria-label={`Ir al miembro ${index + 1} del equipo`}
-              alt={index + 1}
               aria-selected={index === currentIndex}
               role="tab"
             />
@@ -171,7 +149,7 @@ const TeamCarousel = () => {
         <button
           onClick={nextSlide}
           aria-label="Ver el siguiente miembro del equipo"
-          className="p-2 focus:outline-none focus:ring-2 focus:ring-[#d6ff85]"
+          className="p-2 focus:outline-none focus:ring-2 focus:ring-verdeLimaAbitacolo"
         >
           <img
             src={FlechaDrch.src}
