@@ -86,9 +86,9 @@ import logoA from "../image/logos/ANegra.webp";
       return localStorage.getItem(STORAGE_KEY);
     }
 
-    function setStoredConsent(value) {
+    function setStoredConsent(value: string) {
       localStorage.setItem(STORAGE_KEY, value);
-      setCookie(COOKIE_NAME, value, 365); // Set cookie for 1 year
+      setCookie(COOKIE_NAME, value, 365);
     }
 
     function showModal() {
