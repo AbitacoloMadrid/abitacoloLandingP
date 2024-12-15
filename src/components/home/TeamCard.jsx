@@ -4,8 +4,8 @@ import LinkedInNegro from "../../image/logos/LinkedInNegro.webp";
 const TeamCard = React.memo(
   ({ person, position, linkImage, description, linkedin = "" }) => {
     const teamPageLink = useMemo(
-      () => `/team/${encodeURIComponent(person)}`,
-      [person]
+      () =>
+        `/team/${encodeURIComponent(person.toLowerCase().replace(/\s+/g, "-"))}`
     );
 
     return (

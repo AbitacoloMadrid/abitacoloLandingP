@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
@@ -13,97 +14,113 @@ import XLD from "../../image/equipo/XLD.webp";
 import { Image } from "astro:assets";
 
 const { member } = Astro.params;
+
 const team = [
   {
     person: "Juliette C. Mallen",
     position: "CO-FOUNDER & CEO/COO",
     linkImage: JCM,
     linkedin: "https://www.linkedin.com/in/juliette-mallen-a001a2125/",
-    semblanza1:
+    semblanzas: [
       "Me llaman Cathy :) Soy arquitecta por vocación. Para mí, los ladrillos son sólo una parte de nuestro campo. Encontré una manera de combinar mi práctica arquitectónica con la exploración del impacto social y cultural del espacio urbano.",
-    semblanza2:
       "Fundadora y directora creativa del festival kmikc, lideré tres ediciones centradas en la relación entre arquitectura y el impacto cultural. Mi trabajo ha sido reconocido con becas por diseño y por estudios de posgrado, destacando mi versatilidad en proyectos que integran lo arquitectónico con lo creativo y lo académico. Durante la era Covid, concluí el Máster en Comunicación Arquitectónica (UPM).",
-    semblanza3:
       "Actualmente, soy Fundadora de Abitacolo. Aquí, diseñamos y ejecutamos metodologías y procesos innovadores en la rehabilitación de mobiliario y espacios habitacionales. Originaria de otras tierras, Abitacolo comenzó con una exploración personal de ciudades ajenas, complejas y con altas posibilidades de creación.",
-    semblanza4:
-      "Con un fuerte compromiso social, he participado en proyectos disruptivos relacionados con derivas y psicogeografías. Además, fui miembro honorario del Consejo Consultivo del IMPLAN en México. Tuve bajo mi cargo la intervención, rehabilitación y recuperación de parques y plazas, en la Dirección General de Obras Públicas",
-    semblanza5:
+      "Con un fuerte compromiso social, he participado en proyectos disruptivos relacionados con derivas y psicogeografías. Además, fui miembro honorario del Consejo Consultivo del IMPLAN en México. Tuve bajo mi cargo la intervención, rehabilitación y recuperación de parques y plazas, en la Dirección General de Obras Públicas.",
       "Disfruto de trabajar el espacio para el bienestar común, de lo micro a lo macro. Mi pasión es transformar ideas en realidades que mejoren nuestras condiciones sociales y humanas, combinando idealismo y pragmatismo en cada proyecto.",
+    ],
   },
   {
     person: "Guillermo Perales",
     position: "Co-Founder & Creative Director",
     linkImage: GPC,
     linkedin: "https://www.linkedin.com/in/gperalesc/",
-    semblanza1:
+    semblanzas: [
       "¡Hola! Soy Guille, madrileño y arquitecto habilitado por la Escuela Técnica Superior de Arquitectura de Madrid (ETSAM), con estudios complementarios en el University College de Dublín (Irlanda). También me he formado en diseño gráfico en el Istituto Marangoni de Milán (Italia) y cuento con el Máster en Comunicación Arquitectónica de la Universidad Politécnica de Madrid (UPM).",
-    semblanza2:
-      "A lo largo de mi carrera profesional, he participado y ganado premios en diversos proyectos de urbanismo, paisajismo, arquitectura, diseño gráfico, exposiciones…. Pero mi pasión siempre han sido los muebles y el diseño de interiores. Por eso, Abitacolo es un proyecto muy personal en el que pongo en práctica todo lo que sé, siempre a la búsqueda de soluciones más sostenibles y adecuadas para cada hogar. ",
-    semblanza3:
+      "A lo largo de mi carrera profesional, he participado y ganado premios en diversos proyectos de urbanismo, paisajismo, arquitectura, diseño gráfico, exposiciones…. Pero mi pasión siempre han sido los muebles y el diseño de interiores. Por eso, Abitacolo es un proyecto muy personal en el que pongo en práctica todo lo que sé, siempre a la búsqueda de soluciones más sostenibles y adecuadas para cada hogar.",
       "Si quieres saber más sobre mí, solo pide una reunión: ¡estaré encantado de conocerte!  Y podemos hablar en español, inglés o portugués ;)",
+    ],
   },
   {
     person: "Manuel Ben",
     position: "UX Product Designer Specialist",
     linkImage: MBR,
     linkedin: "https://www.linkedin.com/in/benmanuel/",
-    semblanza1:
+    semblanzas: [
       "Soy Manu, un Product Designer con más de 3 años de experiencia en el ecosistema digital y especializado en la investigación de usuarios y desarrollo de soluciones que impulsan el crecimiento empresarial. Me encanta entender qué es lo que realmente necesitan los usuarios empleando metodología de Design Thinking y valorando datos cuantitativos y cualitativos para poder crear un producto acorde a sus necesidades.",
-    semblanza2:
       "Antes de comenzar profesionalmente como UX Designer, trabajé siete años en el sector audiovisual dentro de varios departamentos de Producción y Dirección. Esta experiencia previa me ha aportado grandes habilidades organizativas y de liderazgo de equipos, además de potenciar mi creatividad y carácter resolutivo.",
-    semblanza3:
       "He demostrado una sólida capacidad para desarrollar soluciones centradas en el usuario que se alinean con los objetivos empresariales. Analizo, recabo datos y empleo herramientas de diseño como Figma o Adobe XD para generar los prototipos que derivarán a la creación del producto final.",
-    semblanza4:
       "Sumada a mi experiencia en proyectos de ecommerce, en el sector healthcare y el de los anuncios clasificados, creo firmemente que mi combinación de habilidades en diseño digital y producción audiovisual me convierte en un perfil ideal para un proyecto de este tipo. Especialmente cuando trabajo en equipos dinámicos en los que mis aportaciones son recibidas con entusiasmo y positividad. Abitacolo es uno de ellos.",
+    ],
   },
   {
     person: "Cristina Allen Casal",
     position: "Marketing expert Content & Brand",
     linkImage: CA,
     linkedin: "https://www.linkedin.com/in/cristina-allende-casal/",
-    semblanza1:
+    semblanzas: [
       "Estrategia de marketing, experta en marketing creativo y en creación de marca, si algo se me da bien, es la solución de problemas creativamente (adjetivo que me encanta y le pone cachondeo), además soy campeona de las campañas multicanal.",
-    semblanza2:
       "Apasionada del marketing de start-up y apertura de nuevas categorías y canales. Sé de qué manera optimizar cosas que necesitan optimización, algo que parece redundante, pero claro que no lo es. Por tres años sostuve la corona del Excel en el departamento de marketing, cual reina. Guardiana del ROI y protectora de los inocentes (las incomprendidas estrategias de contenidos y orgánico que no 'dan' ROI).",
-    semblanza3:
       "Perfecta y sobradamente capaz de ostentar cargo de consultora senior de marketing, diseño e implemento estrategias de marketing digital y crecimiento para startups, desarrollo campañas personalizadas de SEO, SEM, redes sociales y email marketing, optimizo funnels de conversación, analiza el mercado y la competencia.",
-    semblanza4:
       "De plus y como sello, la especialidad: colaborar estrechamente con los fundadores para maximizar el rendimiento con recursos limitados, y guiar el crecimiento desde la fase inicial hasta la escalabilidad.",
-    semblanza5:
       "Llevo más de diez años en el mundo start-up ayudando a empresas diversas a alcanzar su máximo potencial de marketing, buscando audiencias globales para SaaS, abriendo categorías en el espacio B2C, pasando por la mentoría a proyectos pre-seed. Finalista en dos ediciones de The Challenge de Startup Valencia.",
+    ],
   },
   {
     person: "Xavier Longo",
     position: "Full Stack Developer",
     linkImage: XLD,
     linkedin: "https://www.linkedin.com/in/xavierlongo/",
-    semblanza1:
+    semblanzas: [
       "Soy Xavi, un apasionado desarrollador Full Stack con experiencia en proyectos innovadores y dominio de tecnologías como React, Astro , Python , MySQL  y Flask. Mi habilidad más contundente sin duda es aportar soluciones creativas y eficientes en el desarrollo web.",
-    semblanza2:
       "Ahora mismo soy responsable del desarrollo de las plataformas digitales para Abitacolo, desde las páginas web hasta las aplicaciones. Éste trabajo me ha llevado a encontrar soluciones no planteadas en un entorno innovador y en sintonía con otras startup como Uelz.",
-    semblanza3:
       "Podría decirse que soy un detective del desarrollo web, ya que constantemente encuentro resultados a situaciones ni siquiera previstas por el proyecto. Mi experiencia incluye la creación de backend, API y bases de datos, lo que me permite manejar el ciclo completo de desarrollo.",
-    semblanza4:
       "Además, tengo un trasfondo en gestión empresarial como gerente en Talleres J Longo, donde he implementado sistemas de control administrativo, experiencia que me otorga habilidades en la gestión de entornos laborales y la resolución de problemas en el día a día.",
-    semblanza5:
       "Mi formación en 4Geeks Academy y mi ciclo formativo en Desarrollo de Aplicaciones Web han sido clave en mi crecimiento profesional. Estoy motivado para seguir innovando y mejorando la experiencia del usuario en cada proyecto, y con Abitacolo, a sostener el entorno vivo de un contenido digital que no se detendrá en su crecimiento.",
+    ],
   },
   {
     person: "Guillermo Correa",
     position: "Full Stack Developer",
     linkImage: GCG,
     linkedin: "https://www.linkedin.com/in/guillermocg8/",
-    semblanza1:
+    semblanzas: [
       "Soy Desarrollador Full Stack con una experiencia liderando y colaborando en equipos multifuncionales. Mi enfoque está en crear soluciones efectivas tanto en el frontend como en el backend, con un dominio en tecnologías como JavaScript, Python, React , Astro, TailwindCSS, SQLAlchemy y Flask. He trabajado en el desarrollo de plataformas Ecommerce, gestionando y coordinando equipos para asegurar la entrega de proyectos y MVPs.",
-    semblanza2:
       "Recientemente, participé en el desarrollo de la plataforma Ecommerce Elévate, donde trabajé en la integración completa del frontend con Astro, React y Zustand, y del backend utilizando Python y SQLAlchemy. Además, en mi rol en Abitacolo, fui responsable de la coordinación del equipo de desarrollo y la gestión de proyectos, asegurando que los plazos y objetivos se cumplieran, y resolviendo problemas a lo largo del proceso de desarrollo.",
-    semblanza3:
       "Mi formación incluye un título de Desarrollador Web Full Stack en 4Geeks Academy, complementado con estudios técnicos en electrónica y automatización. Con habilidades en Git, Docker y un fuerte enfoque en la optimización de código, estoy constantemente buscando mejorar la eficiencia de los sistemas y proyectos en los que trabajo.",
-    semblanza4:
       "Me motiva enfrentar nuevos retos que me hagan seguir aprendiendo, resolver problemas complejos y seguir creciendo como profesional en el mundo del desarrollo web.",
+    ],
   },
 ];
-const teamMember = team.find((e) => e.person === member);
+
+const teamMember = team.find(
+  (e) =>
+    encodeURIComponent(e.person.toLowerCase().replace(/\s+/g, "-")) === member
+);
+
+export const prerender = true;
+
+export const getStaticPaths = (() => {
+  const names = [
+    "Juliette C. Mallen",
+    "Guillermo Perales",
+    "Manuel Ben",
+    "Cristina Allen Casal",
+    "Xavier Longo",
+    "Guillermo Correa",
+  ];
+  const generateSlug = (name: string) =>
+    encodeURIComponent(name.toLowerCase().replace(/\s+/g, "-"));
+
+  return names.map((name) => ({
+    params: { member: generateSlug(name) },
+  }));
+}) satisfies GetStaticPaths;
+
+if (!teamMember) {
+  throw new Error(
+    `No se encontró el miembro del equipo con el nombre: ${member}`
+  );
+}
 ---
 
 <Layout title={teamMember.person}>
@@ -122,28 +139,19 @@ const teamMember = team.find((e) => e.person === member);
             loading="eager"
           />
           <div class="flex flex-col">
-            <h2 class="text-4xl text-center font-semibold">
+            <h1 class="text-4xl text-center font-semibold">
               {teamMember.person}
-            </h2>
-
+            </h1>
             <p class="font-semibold text-2xl text-black text-center">
               {teamMember.position}
             </p>
-            <p class="text-black text-start p-2 text-xl max-sm:text-lg mt-2">
-              {teamMember.semblanza1}
-            </p>
-            <p class="text-black text-start p-2 text-xl max-sm:text-lg">
-              {teamMember.semblanza2}
-            </p>
-            <p class="text-black text-start p-2 text-xl max-sm:text-lg">
-              {teamMember.semblanza3}
-            </p>
-            <p class="text-black text-start p-2 text-xl max-sm:text-lg">
-              {teamMember.semblanza4}
-            </p>
-            <p class="text-black text-start p-2 text-xl max-sm:text-lg">
-              {teamMember.semblanza5}
-            </p>
+            {
+              teamMember.semblanzas.map((text: string) => (
+                <p class="text-black text-start p-2 text-xl max-sm:text-lg mt-2">
+                  {text}
+                </p>
+              ))
+            }
           </div>
         </div>
       </div>
