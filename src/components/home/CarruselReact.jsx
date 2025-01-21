@@ -19,14 +19,7 @@ const team = [
       "Construir mundos desde cero es mi pasión. Convertirlos en proyectos tangibles y significativos, mi objetivo profesional.",
     linkedin: "https://www.linkedin.com/in/juliette-mallen-a001a2125/",
   },
-  {
-    person: "Guillermo Perales",
-    position: "Co-Founder & Creative Director",
-    linkImage: GPC,
-    description:
-      "Para mí, solo hay dos tipos de cosas en el mundo: las que sé hacer y las que aún no sé hacer. Todo es ponerse a ello.",
-    linkedin: "https://www.linkedin.com/in/gperalesc/",
-  },
+
   {
     person: "Manuel Ben",
     position: "UX Product Designer Specialist",
