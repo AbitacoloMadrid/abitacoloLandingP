@@ -5,7 +5,6 @@ import FlechaDrch from "../../image/FlechaDrch.webp";
 
 import CA from "../../image/equipo/CA.webp";
 import GCG from "../../image/equipo/GCG.webp";
-import GPC from "../../image/equipo/GPC.webp";
 import JCM from "../../image/equipo/JCM.webp";
 import MBR from "../../image/equipo/MBR.webp";
 import XLD from "../../image/equipo/XLD.webp";
